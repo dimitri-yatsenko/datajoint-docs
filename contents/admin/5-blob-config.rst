@@ -53,7 +53,7 @@ DataJoint organizes external storage to preserve the same data integrity princip
 
 2. Each schema corresponds to a dedicated folder at the storage location with the same name as the database schema.
 
-3. Stored objects are identified by the `SHA-256 <https://en.wikipedia.org/wiki/SHA-2>`_ hashes (in web-safe base-64 ASCII) of their serialized contents.
+3. Stored objects are identified by the UUID-formatted hashes of their serialized contents.
    This scheme allows for the same object—used multiple times in the same schema—to be stored only once.
 
 4. In the ``external-raw`` storage, the objects are saved as files with the hash as the filename. 
@@ -76,14 +76,16 @@ DataJoint organizes external storage to preserve the same data integrity princip
 
             * - HASH
               - size
+              - attachment_name
               - filepath
               - contents_hash
               - timestamp
-            * - 1GEqtEU6JYEOLS4sZHeHDxWQ3JJfLlH VZio1ga25vd2
+            * - 208a90c6-03ff-00d6-c113-b328607a9ee5
               - 1039536788
-              - NULL
-              - NULL
-              - 2017-06-07 23:14:01
+              - None
+              - None
+              - 914f5b55-ea69-7489-d45b-031bec3ecaa5
+              - 2019-11-07 23:14:01
 
    .. only:: html
 
@@ -97,16 +99,19 @@ DataJoint organizes external storage to preserve the same data integrity princip
 
             * - HASH
               - size
+              - attachment_name
               - filepath
               - contents_hash
               - timestamp
-            * - 1GEqtEU6JYE |br| OLS4sZHeHDx |br| WQ3JJfLlHVZ |br| io1ga25vd2
+            * - 208a90c6-03ff-00d6-c113-b328607a9ee5
               - 1039536788
-              - NULL
-              - NULL
-              - 2017-06-07 23:14:01
+              - None
+              - None
+              - 914f5b55-ea69-7489-d45b-031bec3ecaa5
+              - 2019-11-07 23:14:01
 
    The fields `filepath` and `contents_hash` relate to the :ref:`filepath <filepath>` datatype, which will be discussed separately.
+   The field `attachment_name` 
 
 7. Attributes of type ``@<storename>`` are declared as renamed :ref:`foreign keys <dependencies>` referencing the ``~external_<storename>`` table (but are not shown as such to the user).
 
